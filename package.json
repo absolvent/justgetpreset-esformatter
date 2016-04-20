@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "esformatter": "^0.9.3",
+    "esformatter-braces": "^1.2.1",
+    "esformatter-jsx": "^5.0.0",
+    "esformatter-quote-props": "^2.0.0",
+    "esformatter-quotes": "^1.0.3",
+    "esformatter-var-each": "^2.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "space-preconfigured-eslint": "^1.4.11",
+    "space-preconfigured-mocha": "^1.1.2"
+  },
+  "description": "Wrapper around esformatter for ease of use and zero configuration.",
+  "engines": {
+    "node": ">=4.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gulp",
+    "esformatter"
+  ],
+  "main": "index",
+  "name": "space-preconfigured-esformatter",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:spacekick/space-preconfigured-esformatter.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "version": "1.0.0"
+}
