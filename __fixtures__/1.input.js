@@ -16,13 +16,20 @@ export default React.createClass({
             bar = "world's";
 
         return (
-            <div>
+            <div className="wrapper">
                 {/* test */}
                 <div></div>
                     <div>
                         <span>{foo}</span>
                     </div>
                 Hello, {bar}!
+
+                        <div style={{
+                            padding: 4,
+                            margin: 1
+                        }} className="test">{foo => (
+                            <span />
+                        )}</div>
             </div>
         );
     }

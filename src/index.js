@@ -30,7 +30,16 @@ function format(code) {
       value: '  ',
     },
     jsx: {
+      alignWithFirstAttribute: false,
+      attrsOnSameLineAsTag: false,
+      JSXExpressionsSingleLine: false,
       spaceInJSXExpressionContainers: '',
+      htmlOptions: {
+        indent_char: ' ',
+        indent_size: 2,
+        max_preserve_newlines: 2,
+        preserve_newlines: true,
+      },
     },
     quotes: {
       avoidEscape: true,
