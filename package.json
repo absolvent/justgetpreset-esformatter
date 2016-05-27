@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "space-preconfigured-eslint": "^1.4.11",
-    "space-preconfigured-mocha": "^1.1.2"
+    "lookly-preset-eslint": "^1.4.11",
+    "lookly-preset-mocha": "^1.1.2"
   },
   "description": "Wrapper around esformatter for ease of use and zero configuration.",
   "engines": {
@@ -23,10 +23,10 @@
     "esformatter"
   ],
   "main": "index",
-  "name": "space-preconfigured-esformatter",
+  "name": "lookly-preset-esformatter",
   "repository": {
     "type": "git",
-    "url": "git@github.com:spacekick/space-preconfigured-esformatter.git"
+    "url": "git@github.com:lookly/lookly-preset-esformatter.git"
   },
   "scripts": {
     "test": "gulp test"
