@@ -9,19 +9,22 @@
 'use strict';
 
 const esformatter = require('esformatter');
+const esformatterAddTrailingCommas = require('esformatter-add-trailing-commas');
 const esformatterBraces = require('esformatter-braces');
-const esformatterJsx = require('esformatter-jsx');
 const esformatterQuoteProps = require('esformatter-quote-props');
 const esformatterQuotes = require('esformatter-quotes');
+const esformatterSemicolons = require('esformatter-semicolons');
 const esformatterVarEach = require('esformatter-var-each');
 const fs = require('fs');
 const Promise = require('bluebird');
+const glob = require('ultra-glob');
 
 esformatter.unregisterAll();
+esformatter.register(esformatterAddTrailingCommas);
 esformatter.register(esformatterBraces);
-esformatter.register(esformatterJsx);
 esformatter.register(esformatterQuoteProps);
 esformatter.register(esformatterQuotes);
+esformatter.register(esformatterSemicolons);
 esformatter.register(esformatterVarEach);
 
 function format(code) {
@@ -29,38 +32,45 @@ function format(code) {
     indent: {
       value: '  ',
     },
-    jsx: {
-      alignWithFirstAttribute: false,
-      attrsOnSameLineAsTag: false,
-      JSXExpressionsSingleLine: false,
-      spaceInJSXExpressionContainers: '',
-      htmlOptions: {
-        indent_char: ' ',
-        indent_size: 2,
-        max_preserve_newlines: 2,
-        preserve_newlines: true,
-      },
-    },
     quotes: {
       avoidEscape: true,
       type: 'single',
     },
     whiteSpace: {
       removeTrailing: true,
+      after: {
+        FunctionReservedWord: 1,
+        ObjectPatternOpeningBrace: 1,
+      },
       before: {
+        FunctionName: 1,
+        ObjectPatternClosingBrace: 1,
       },
     },
   });
 }
 
-function formatFile(filename) {
-  return Promise.fromCallback(callback => fs.readFile(filename, callback))
+function formatFromFile(filename) {
+  return Promise.fromCallback(cb => fs.readFile(filename, cb))
     .then(contents => contents.toString())
-    .then(contents => format(contents))
-  ;
+    .then(contents => format(contents));
+}
+
+function formatFile(filename) {
+  return formatFromFile(filename).then(formatted => (
+    Promise.fromCallback(cb => fs.writeFile(filename, formatted, cb))
+  ));
+}
+
+function formatGlob(pattern) {
+  return glob(pattern).then(files => (
+    Promise.all(files.map(filename => formatFile(filename)))
+  ));
 }
 
 module.exports = {
   format,
   formatFile,
+  formatFromFile,
+  formatGlob,
 };

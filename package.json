@@ -2,11 +2,13 @@
   "dependencies": {
     "bluebird": "^3.3.5",
     "esformatter": "^0.9.3",
+    "esformatter-add-trailing-commas": "^1.1.0",
     "esformatter-braces": "^1.2.1",
-    "esformatter-jsx": "^5.0.0",
     "esformatter-quote-props": "^2.0.0",
     "esformatter-quotes": "^1.0.3",
-    "esformatter-var-each": "^2.1.0"
+    "esformatter-semicolons": "^1.1.2",
+    "esformatter-var-each": "^2.1.0",
+    "ultra-glob": "^1.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -22,7 +24,7 @@
     "gulp",
     "esformatter"
   ],
-  "main": "index",
+  "main": "src/index",
   "name": "lookly-preset-esformatter",
   "repository": {
     "type": "git",
@@ -31,5 +33,5 @@
   "scripts": {
     "test": "gulp test"
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

@@ -9,14 +9,21 @@
 'use strict';
 
 const gulp = require('gulp');
+const esformatter = require('./src');
 const eslint = require('lookly-preset-eslint');
 const mocha = require('lookly-preset-mocha');
 
-gulp.task('lint', function () {
-  return eslint([
-    __filename,
-    './src/**/*.js',
-  ]);
+const formattedFiles = [
+  __filename,
+  './src/**/*.js',
+];
+
+gulp.task('format', function () {
+  return esformatter.formatGlob(formattedFiles);
+});
+
+gulp.task('lint', ['format'], function () {
+  return eslint(formattedFiles);
 });
 
 gulp.task('test', ['lint'], function () {
