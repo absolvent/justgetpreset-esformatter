@@ -1,19 +1,19 @@
 {
   "dependencies": {
-    "bluebird": "^3.3.5",
-    "esformatter": "^0.9.3",
+    "bluebird": "^3.4.0",
+    "esformatter": "^0.9.5",
     "esformatter-add-trailing-commas": "^1.1.0",
     "esformatter-braces": "^1.2.1",
     "esformatter-quote-props": "^2.0.0",
-    "esformatter-quotes": "^1.0.3",
+    "esformatter-quotes": "^1.1.0",
     "esformatter-semicolons": "^1.1.2",
     "esformatter-var-each": "^2.1.0",
     "ultra-glob": "^1.1.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "lookly-preset-eslint": "^1.4.11",
-    "lookly-preset-mocha": "^1.1.2"
+    "gulp": "^3.9.1",
+    "lookly-preset-ava": "^1.0.0",
+    "lookly-preset-eslint": "^1.4.11"
   },
   "description": "Wrapper around esformatter for ease of use and zero configuration.",
   "engines": {
@@ -33,5 +33,5 @@
   "scripts": {
     "test": "gulp test"
   },
-  "version": "1.1.0"
+  "version": "2.0.0"
 }

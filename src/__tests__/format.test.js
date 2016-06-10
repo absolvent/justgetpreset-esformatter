@@ -10,15 +10,12 @@
 
 /* global describe: false, it: false */
 
-const esformatter = require('../index');
+const formatFromFile = require('../formatFromFile');
 const path = require('path');
+const test = require('lookly-preset-ava/test');
 
-describe('format', function () {
-  it('should format code in place', function () {
-    const fixturePath = path.resolve(__dirname, '../../__fixtures__/1.input.js');
+test('should format code in place', function () {
+  const fixturePath = path.resolve(__dirname, '../../__fixtures__/1.input.js');
 
-    return esformatter.formatFile(fixturePath).then(formatted => {
-      console.log(formatted);
-    });
-  });
+  return formatFromFile(fixturePath);
 });

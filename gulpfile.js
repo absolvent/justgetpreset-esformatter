@@ -8,10 +8,10 @@
 
 'use strict';
 
+const ava = require('lookly-preset-ava');
 const gulp = require('gulp');
 const esformatter = require('./src');
 const eslint = require('lookly-preset-eslint');
-const mocha = require('lookly-preset-mocha');
 
 const formattedFiles = [
   __filename,
@@ -19,7 +19,7 @@ const formattedFiles = [
 ];
 
 gulp.task('format', function () {
-  return esformatter.formatGlob(formattedFiles);
+  return esformatter(formattedFiles);
 });
 
 gulp.task('lint', ['format'], function () {
@@ -27,7 +27,7 @@ gulp.task('lint', ['format'], function () {
 });
 
 gulp.task('test', ['lint'], function () {
-  return mocha([
+  return ava([
     './src/__tests__/**/*.js',
   ]);
 });

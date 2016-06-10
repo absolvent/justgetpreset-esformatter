@@ -8,14 +8,14 @@
 
 'use strict';
 
-const formatFile = require('./formatFile');
+const formatFromFile = require('./formatFromFile');
+const fs = require('fs');
 const Promise = require('bluebird');
-const glob = require('ultra-glob');
 
-function formatGlob(pattern) {
-  return glob(pattern).then(files => (
-  Promise.all(files.map(filename => formatFile(filename)))
+function formatFile(filename) {
+  return formatFromFile(filename).then(formatted => (
+  Promise.fromCallback(cb => fs.writeFile(filename, formatted, cb))
   ));
 }
 
-module.exports = formatGlob;
+module.exports = formatFile;
